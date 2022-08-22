@@ -1,0 +1,31 @@
+Given a binary tree, find its level order traversal.
+Level order traversal of a tree is breadth-first traversal for the tree.
+
+class Solution
+{
+    public:
+    // int height(Node* root){
+    //     if(root== NULL) return 0;
+    //     else{
+    //         int lh= height(root->left);
+    //         int rh= height(root->right);
+    //         if(lh>rh) return lh+1;
+    //         else rh+1;
+    //     }
+    // }
+    //Function to return the level order traversal of a tree.
+    vector<int> levelOrder(Node* node)
+    {
+      vector<int> vec;
+      queue<Node*> q;
+      q.push(node);
+      while(!q.empty()){
+          Node* cur= q.front();
+          q.pop();
+          vec.push_back(cur->data);
+          if(cur->left) q.push(cur->left);
+          if(cur->right) q.push(cur->right);
+      }
+      return vec;
+    }
+};
